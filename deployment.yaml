@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-deployment
+  namespace: app
+  
+spec:
+  selector:
+    matchLabels:
+      app: dev-pod
+  template:
+    metadata:
+      labels:
+        app: dev-pod
+    spec:
+      containers:
+      - name: dev-container
+        image: wil42/playground:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8888
+          name: app-port
